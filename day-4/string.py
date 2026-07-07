@@ -85,4 +85,48 @@ print("You cannot end a sentence with because because because is a conjunction".
 # exexercise 4.25
 print("You cannot end a sentence with because because because is a conjunction".replace(" because because because", ""))
 
+# exexercise 4.26
+print("You cannot end a sentence with because because because is a conjunction".index("because"))
+print("You cannot end a sentence with because because because is a conjunction".find("because"))
+
+# exexercise 4.27
+print("You cannot end a sentence with because because because is a conjunction".replace("because because because", ""))
+
+# exexercise 4.28
+print("Coding For All".startswith("Coding"))
+
+# exexercise 4.29
+print("Coding For All".endswith("coding"))
+
+# exexercise 4.30
+print("   Coding For All      "[3:len("   Coding For All      ") - 6])
+
+# exexercise 4.31
+print("30DaysOfPython".isidentifier())
+print("thirty_days_of_python".isidentifier())
+
+# exexercise 4.32
+print((", ").join(['Django', 'Flask', 'Bottle', 'Pyramid', 'Falcon']))
+
+# exexercise 4.33
+print("I am enjoying this challenge.\nI just wonder what is next.")
+
+# exexercise 4.34
+print("Nam\tAge\tCountry\tCity\nAsabeneh\t250\tFinland\tHelsinki")
+
+# exexercise 4.35
+radius = 10
+area = 3.14 * radius ** 2
+print("The area of a circle with radius {} is {} meters square.".format(radius,int(area)))
+
+# exexercise 4.36
+a = 8
+b = 6
+print(f"{a} + {b} = {a + b}")
+print(f"{a} - {b} = {a - b}")
+print(f"{a} * {b} = {a * b}")
+print(f"{a} / {b} = {a / b:.2f}")
+print(f"{a} % {b} = {a % b}")
+print(f"{a} // {b} = {a // b}")
+print(f"{a} ** {b} = {a ** b}")
 

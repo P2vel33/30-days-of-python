@@ -61,3 +61,37 @@ print(calculate_slope(1,2,3,8))
 position_1 = {"x1":1,"y1":2, "x2":3,"y2":8}
 position_2 = {}
 print(calculate_slope(*position_1))
+
+# day 11 level 1 exexercise 7
+print("\nday 11 level 1 exexercise 7")
+def solve_quadratic_eqn (a,b,c):
+    discriminant = b**2 - 4 * a * c
+    if discriminant >= 0:
+        sqrt_discriminant = math.sqrt(discriminant)
+        return ([(-b + sqrt_discriminant)/2 * a, (-b - sqrt_discriminant)/2 * a])
+    else:
+        return "There is no solution!"
+print(solve_quadratic_eqn(3,-12,9))
+
+# day 11 level 1 exexercise 8
+print("\nday 11 level 1 exexercise 8")
+def print_list (example_list):
+    if (type(example_list)) == list:
+        for item_of_list in example_list:
+            print(item_of_list)
+    else:
+        return print("The data entered is not a list!")
+print_list(['s',1,False])
+print_list("sadw")
+
+# day 11 level 1 exexercise 9
+print("\nday 11 level 1 exexercise 9")
+def reverse_list (example_list):
+    if (type(example_list)) == list:
+        result = []
+        for item_of_list in example_list:
+            result.insert(0,item_of_list)
+        return result
+    else:
+        return print("The data entered is not a list!")
+print(reverse_list([1,2,3,4]))

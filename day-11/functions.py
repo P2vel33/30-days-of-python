@@ -132,7 +132,7 @@ def remove_item (example_list, rm_item):
         else:
             return "This value is not in the list!"
     else:
-        return print("The data entered is not a list!")
+        return "The data entered is not a list!"
 print(remove_item(['All', 'likes', 'python'],'python'))
 
 # day 11 level 1 exexercise 13
@@ -183,3 +183,139 @@ def is_empty (param):
     else:
         return True
 print(is_empty(4))
+
+# day 11 level 2 exexercise 4
+print("\nday 11 level 2 exexercise 4")
+# calculate_mean, calculate_median, calculate_mode, calculate_range, calculate_variance, calculate_std
+def calculate_mean (entry_list):
+    if type(entry_list) == list:
+        sum_entry_list = 0
+        for item_entry_list in entry_list:
+            sum_entry_list += item_entry_list
+        return sum_entry_list/len(entry_list)
+    else:
+        return "The data entered is not a list!"
+print(calculate_mean([1,2,3,4,5,6,7]))
+
+print("\n")
+def calculate_median(entry_list):
+    if type(entry_list) == list:
+        entry_list.sort()
+        return entry_list[len(entry_list)//2]
+    else:
+        return "The data entered is not a list!"
+print(calculate_median([5,4,3,2,1,0]))
+
+print("\n")
+def calculate_mode(entry_list):
+    if type(entry_list) == list:
+        count_item_entry_list = {}
+        for item_entry_list in entry_list:
+            if item_entry_list in count_item_entry_list:
+                count_item_entry_list[item_entry_list] += 1
+            else:
+                count_item_entry_list[item_entry_list] = 1
+        return max(count_item_entry_list, key=count_item_entry_list.get)
+    else:
+        return "The data entered is not a list!"
+print(calculate_mode([1,2,3,6,7,9,9,10,3,5,6,7,3,2,6,7,1,1,43,56,3,2,6,8,2]))
+
+print("\n")
+def calculate_range(entry_list):
+    if type(entry_list) == list:
+
+        return  min(entry_list), max(entry_list)
+    else:
+        return "The data entered is not a list!"
+print(calculate_range([1,2,3,6,7,9,9,10,3,5,6,7,3,2,6,7,1,1,43,56,3,2,6,8,2]))
+
+
+# day 11 level 2 exexercise 5
+print("\nday 11 level 2 exexercise 5")
+def greet(name):
+    if name:
+        return "Hello, {}!".format(name)
+    else:
+        return "Hello, Guest!"
+print(greet("Roman"))
+
+# day 11 level 2 exexercise 6
+print("\nday 11 level 2 exexercise 6")
+def show_args(**args):
+    if args:
+        result = {}
+        for arg in args:
+            result[arg] = args[arg]
+        return result
+    else:
+        return "No input data!"
+print(show_args(name="Alice", age=30, city="New York"))
+
+# day 11 level 3 exexercise 1
+print("\nday 11 level 3 exexercise 1")
+def is_prime(num):
+    if type(num) == int:
+        if num == 2:
+            return True
+        num_sqrt = int(math.sqrt(num))
+        for i in range(2,num_sqrt + 1):
+            if num % i == 0:
+                return False
+        return True
+    else:
+        return "Data input isn`t a number!"
+print(is_prime(4))
+
+# day 11 level 3 exexercise 2
+print("\nday 11 level 3 exexercise 2")
+def item_unique(entry_list):
+    if type(entry_list) == list:
+        set_entry_list = set(entry_list)
+        return len(set_entry_list) == len(entry_list)
+    else:
+        return "The data entered is not a list!"
+print(item_unique([1,2,3,4,4]))
+
+# day 11 level 3 exexercise 3
+print("\nday 11 level 3 exexercise 3")
+def type_item_unique(entry_list):
+    if type(entry_list) == list:
+        type_unique = type(entry_list[0])
+        for item_entry_list in entry_list:
+            if type(item_entry_list) != type_unique:
+                return False
+        return True
+    else:
+        return "The data entered is not a list!"
+print(type_item_unique([1,2,3,4,4,"1"]))
+
+# day 11 level 3 exexercise 5
+print("\nday 11 level 3 exexercise 5")
+
+from data.countries_data import countries_data
+def most_spoken_languages(entry_list):
+    if type(entry_list) == list:
+        languages = {}
+        for item_entry_list in entry_list:
+            if item_entry_list['languages'] and type(item_entry_list['languages']) == list:
+                for language in item_entry_list['languages']:
+                    languages[language] = languages.get(language, 0) + 1
+        return sorted(languages.items(), key=lambda x:x[1], reverse=True)[:20]
+    else:
+        return "The data entered is not a list!"
+print(most_spoken_languages(countries_data))
+def most_populated_countries(entry_list):
+    if type(entry_list) == list:
+        result = []
+        for country_data in sorted(entry_list, key=lambda x:x["population"], reverse=True)[:20]:
+            result.append({"country_name": country_data["name"], "country_population": country_data["population"]})
+        return result
+
+    else:
+        return "The data entered is not a list!"
+print(most_populated_countries(countries_data))
+
+
+
+
+    

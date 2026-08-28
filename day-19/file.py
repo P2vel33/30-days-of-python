@@ -4,8 +4,11 @@ import json
 from pathlib import Path
 from functools import reduce
 
+
 project_root = Path(__file__).parent.parent
 sys.path.insert(0,str(project_root))
+
+from data import stop_words
 
 # day 19 level 1 exexercise 1
 print("\nday 19 level 1 exexercise 1")
@@ -99,6 +102,62 @@ print(find_most_common_words(f'{project_root}/data/obama_speech.txt',10))
 print(find_most_common_words(f'{project_root}/data/michelle_obama_speech.txt',10))
 print(find_most_common_words(f'{project_root}/data/donald_speech.txt',10))
 print(find_most_common_words(f'{project_root}/data/melina_trump_speech.txt',10))
+
+# day 19 level 2 exexercise 4
+print("\nday 19 level 2 exexercise 4")
+def comparison_file_texts(file_path1, file_path2):
+
+    def clean_text(text):
+        regex = r'\b\w+\b'
+        return re.findall(regex,text)
+
+    def remove_support_words(text_list):
+        return list(filter(lambda x: x not in stop_words.stop_words,text_list))
+
+    def check_text_similarity(text_list1, text_list2):
+        if(len(text_list1) != len(text_list2)):
+            return False
+        else:
+            set_text1 = set(text_list1)
+            set_text2 = set(text_list2)
+            if(len(set_text2) != len(set_text1)):
+                return False
+            else:
+                def get_words_text(list_text):
+                    dict_text = {}
+                    for word in list_text:
+                        if(dict_text.get(word)):
+                            dict_text[word] += 1
+                        else:
+                            dict_text[word] = 1
+                    return dict_text
+                dict_count_words_text1 = get_words_text(text_list1)
+                dict_count_words_text2 = get_words_text(text_list2)
+                for i,v in zip(dict_count_words_text1,dict_count_words_text2):
+                    if(dict_count_words_text1.get(i) != dict_count_words_text2.get(i) or dict_count_words_text1.get(v) != dict_count_words_text2.get(v)):
+                        return False
+                return True
+        
+    try:
+        if(type(file_path1) == str and type(file_path2) == str):
+            return check_text_similarity(remove_support_words(clean_text(file_path1)),remove_support_words(clean_text(file_path2)))
+        else:    
+            text1 = ''
+            text2 = ''
+            with open(file_path1,'r') as f1:
+                text1 = f1.read()
+            with open(file_path2,'r') as f2:
+                text2 = f2.read()
+            return check_text_similarity(remove_support_words(clean_text(text1)),remove_support_words(clean_text(text2)))
+
+    except:
+        print("Error")
+
+print(comparison_file_texts(f'{project_root}/data/obama_speech.txt', f'{project_root}/data/obama_speech.txt'))
+
+# day 19 level 2 exexercise 5
+print("\nday 19 level 2 exexercise 5")
+print(find_most_common_words(f'{project_root}/data/romeo_and_juliet.txt',10))
 
 
 

@@ -1,3 +1,4 @@
+import csv
 import sys
 import re
 import json
@@ -159,7 +160,28 @@ print(comparison_file_texts(f'{project_root}/data/obama_speech.txt', f'{project_
 print("\nday 19 level 2 exexercise 5")
 print(find_most_common_words(f'{project_root}/data/romeo_and_juliet.txt',10))
 
+# day 19 level 2 exexercise 6
+print("\nday 19 level 2 exexercise 6")
+def count_word_hacker_news(regex):
+    try:
+        with open(f'{project_root}/data/hacker_news.csv') as f:
+            fi = csv.reader(f, delimiter=',')
+            python_result = 0
+            for index, i in enumerate(fi):
+                curr_index = 0
+                for elem in i:
+                    if(re.search(regex, elem)):
+                        if(curr_index == index):
+                            continue
+                        curr_index = index
+                        python_result += 1
+            return python_result
 
+    except:
+        print('LOL')
+print(count_word_hacker_news(r"[P|p]ython"))
+print(count_word_hacker_news(r"[J|j]ava[S|s]cript"))
+print(count_word_hacker_news(r"Java(?!script|Script)"))
 
 
 

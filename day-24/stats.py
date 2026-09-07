@@ -173,3 +173,26 @@ print(random_int)
 # np.random.normal(mu, sigma, size)
 normal_array = np.random.normal(79, 15, 80)
 print(normal_array)
+
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+sns.set()
+print(plt.hist(normal_array, color="grey", bins=50))
+
+
+four_by_four_matrix = np.matrix(np.ones((4,4), dtype=float))
+print(four_by_four_matrix)
+
+# Similar to range arange numpy.arange(start, stop, step)
+whole_numbers = np.arange(0, 20, 1)
+print(whole_numbers)
+natural_numbers = np.arange(1, 20, 1)
+print(natural_numbers)
+odd_numbers = np.arange(1, 20, 2)
+print(odd_numbers)
+
+# numpy.linspace()
+# numpy.logspace() in Python with Example
+# For instance, it can be used to create 10 values from 1 to 5 evenly spaced.
+print(np.linspace(1.0, 5.0, num=10))

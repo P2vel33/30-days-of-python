@@ -196,3 +196,41 @@ print(odd_numbers)
 # numpy.logspace() in Python with Example
 # For instance, it can be used to create 10 values from 1 to 5 evenly spaced.
 print(np.linspace(1.0, 5.0, num=10))
+
+
+a = [1,2,3]
+
+# Repeat whole of 'a' two times
+print('Tile:   ', np.tile(a, 2))
+
+# Repeat each element of 'a' two times
+print('Repeat: ', np.repeat(a, 2))
+
+np_normal_dis = np.random.normal(5, 0.5, 100)
+np_normal_dis
+## min, max, mean, median, sd
+print('min: ', two_dimension_array.min())
+print('max: ', two_dimension_array.max())
+print('mean: ',two_dimension_array.mean())
+# print('median: ', two_dimension_array.median())
+print('sd: ', two_dimension_array.std())
+
+# Random numbers between [0,1) of shape 2,3
+r = np.random.random(size=[2,3])
+print(r)
+
+print(np.random.choice(['a', 'e', 'i', 'o', 'u'], size=10))
+
+
+np_normal_dis = np.random.normal(5, 0.5, 1000) # mean, standard deviation, number of samples
+## min, max, mean, median, sd
+print('min: ', np.min(np_normal_dis))
+print('max: ', np.max(np_normal_dis))
+print('mean: ', np.mean(np_normal_dis))
+print('median: ', np.median(np_normal_dis))
+print('sd: ', np.std(np_normal_dis))
+
+
+
+plt.hist(np_normal_dis, color="grey", bins=21)
+plt.show()
